@@ -1,88 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Join Our Community</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background-color: #f0f0f0;
       margin: 0;
       padding: 0;
+      background-color: #000;
+      color: #fff;
+      font-family: 'Segoe UI', sans-serif;
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
     }
+
     .container {
-      background-color: white;
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      width: 80%;
-      max-width: 600px;
       text-align: center;
+      padding: 40px;
+      border: 1px solid #fff;
+      border-radius: 12px;
+      max-width: 500px;
+      width: 90%;
+      background-color: #111;
     }
+
     h1 {
-      color: #333;
+      font-size: 28px;
+      margin-bottom: 20px;
+      color: #fff;
     }
-    .code-section, .discord-section {
-      margin-top: 20px;
-      padding: 10px;
-      background-color: #f9f9f9;
-      border-radius: 6px;
-    }
-    .code {
+
+    .code-box {
       font-size: 24px;
       font-weight: bold;
-      color: #2c3e50;
+      background: #222;
+      padding: 15px;
+      border-radius: 8px;
+      border: 1px dashed #666;
+      margin: 20px 0;
+      color: #0f0;
     }
+
     .discord-button {
       display: inline-block;
-      padding: 10px 20px;
-      margin-top: 20px;
-      background-color: #7289DA;
-      color: white;
+      padding: 12px 24px;
+      background-color: #fff;
+      color: #000;
+      font-weight: bold;
+      border-radius: 6px;
       text-decoration: none;
-      border-radius: 5px;
-      font-size: 16px;
+      transition: all 0.3s ease;
     }
+
     .discord-button:hover {
-      background-color: #5a6ab6;
+      background-color: #ddd;
+    }
+
+    .subtext {
+      font-size: 14px;
+      color: #aaa;
+      margin-top: 10px;
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>Welcome to Our Community!</h1>
-
-    <!-- Random Code Section -->
-    <div class="code-section">
-      <p>Here is your unique code:</p>
-      <div class="code" id="userCode"></div>
-    </div>
-
-    <!-- Discord Invite Section -->
-    <div class="discord-section">
-      <p>Click the button below to join our Discord server:</p>
-      <a href="YOUR_DISCORD_INVITE_LINK" class="discord-button" target="_blank">Join Discord</a>
-    </div>
+    <h1>Your Unique Access Code</h1>
+    <div class="code-box" id="userCode">Loading...</div>
+    <a href="YOUR_DISCORD_INVITE_LINK" target="_blank" class="discord-button">Join Discord</a>
+    <div class="subtext">Save this code. It may be required for verification.</div>
   </div>
 
   <script>
-    // Function to generate a random code (e.g., 6 characters of uppercase letters and numbers)
-    function generateRandomCode() {
-      const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-      let code = '';
-      for (let i = 0; i < 6; i++) {
-        code += characters.charAt(Math.floor(Math.random() * characters.length));
+    // Generate or retrieve a persistent user code
+    function getOrCreateCode() {
+      let storedCode = localStorage.getItem('uniqueUserCode');
+      if (storedCode) {
+        return storedCode;
+      } else {
+        const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+        let code = '';
+        for (let i = 0; i < 6; i++) {
+          code += chars.charAt(Math.floor(Math.random() * chars.length));
+        }
+        localStorage.setItem('uniqueUserCode', code);
+        return code;
       }
-      return code;
     }
 
-    // Display the random code
-    document.getElementById('userCode').innerText = generateRandomCode();
+    // Set the code on the page
+    document.getElementById('userCode').innerText = getOrCreateCode();
   </script>
 </body>
 </html>
