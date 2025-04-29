@@ -3,75 +3,111 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Join Our Community</title>
+  <title>Initiation Complete</title>
   <style>
     body {
       margin: 0;
       padding: 0;
       background-color: #000;
       color: #fff;
-      font-family: 'Segoe UI', sans-serif;
+      font-family: 'Courier New', monospace;
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
+      overflow: hidden;
     }
 
     .container {
       text-align: center;
       padding: 40px;
-      border: 1px solid #fff;
-      border-radius: 12px;
-      max-width: 500px;
-      width: 90%;
-      background-color: #111;
+      max-width: 600px;
+      border: 1px solid #333;
+      border-radius: 10px;
+      background-color: #0a0a0a;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.05);
+      animation: fadeIn 1.5s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
     }
 
     h1 {
-      font-size: 28px;
-      margin-bottom: 20px;
-      color: #fff;
+      font-size: 24px;
+      margin-bottom: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .motto {
+      font-size: 14px;
+      color: #aaa;
+      margin-bottom: 30px;
+      font-style: italic;
     }
 
     .code-box {
-      font-size: 24px;
+      font-size: 26px;
       font-weight: bold;
-      background: #222;
+      background: #111;
       padding: 15px;
       border-radius: 8px;
-      border: 1px dashed #666;
+      border: 1px dashed #555;
       margin: 20px 0;
-      color: #0f0;
+      color: #00ff55;
+      letter-spacing: 3px;
     }
 
     .discord-button {
       display: inline-block;
       padding: 12px 24px;
-      background-color: #fff;
-      color: #000;
+      background-color: transparent;
+      border: 1px solid #fff;
+      color: #fff;
       font-weight: bold;
       border-radius: 6px;
       text-decoration: none;
+      margin-top: 20px;
       transition: all 0.3s ease;
     }
 
     .discord-button:hover {
-      background-color: #ddd;
+      background-color: #fff;
+      color: #000;
     }
 
-    .subtext {
-      font-size: 14px;
-      color: #aaa;
-      margin-top: 10px;
+    .footer {
+      font-size: 12px;
+      color: #555;
+      margin-top: 40px;
+    }
+
+    .divider {
+      height: 1px;
+      background-color: #333;
+      margin: 30px auto;
+      width: 60%;
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>Your Unique Access Code</h1>
-    <div class="code-box" id="userCode">Loading...</div>
-    <a href="YOUR_DISCORD_INVITE_LINK" target="_blank" class="discord-button">Join Discord</a>
-    <div class="subtext">Save this code. It may be required for verification.</div>
+    <h1>Access Granted</h1>
+    <div class="motto">"Vincere. Tacere. Praevalere."</div>
+
+    <div class="divider"></div>
+
+    <p>This is your unique key:</p>
+    <div class="code-box" id="userCode">LOADING</div>
+
+    <p>You are now one of the chosen. Proceed below.</p>
+    <a href="YOUR_DISCORD_INVITE_LINK" target="_blank" class="discord-button">Enter The Chamber</a>
+
+    <div class="footer">
+      The Circle of Three watches in silence.
+    </div>
   </div>
 
   <script>
@@ -91,7 +127,6 @@
       }
     }
 
-    // Set the code on the page
     document.getElementById('userCode').innerText = getOrCreateCode();
   </script>
 </body>
