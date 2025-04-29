@@ -2,95 +2,87 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Access Request</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Join Our Community</title>
   <style>
     body {
-      background-color: #000;
-      color: #fff;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      margin: 0;
+      padding: 0;
       display: flex;
-      flex-direction: column;
+      justify-content: center;
       align-items: center;
-      padding: 50px 20px;
-      line-height: 1.6;
+      height: 100vh;
     }
-
-    h1, h2 {
-      color: #fff;
-      margin-bottom: 10px;
-    }
-
-    p.note {
-      font-style: italic;
-      margin-bottom: 40px;
-      color: #ccc;
-    }
-
-    form {
-      display: flex;
-      flex-direction: column;
-      width: 100%;
-      max-width: 400px;
-      margin-bottom: 60px;
-    }
-
-    input, textarea {
-      padding: 10px;
-      margin-bottom: 20px;
-      background-color: #111;
-      border: 1px solid #444;
-      color: #fff;
-    }
-
-    button {
-      padding: 10px;
-      background-color: #fff;
-      color: #000;
-      font-weight: bold;
-      cursor: pointer;
-      border: none;
-    }
-
-    a.discord-link {
-      display: inline-block;
-      margin-top: 10px;
-      padding: 10px 20px;
-      background-color: #fff;
-      color: #000;
-      font-weight: bold;
-      text-decoration: none;
-    }
-
-    a.discord-link:hover {
-      background-color: #ccc;
-    }
-
-    section {
-      width: 100%;
+    .container {
+      background-color: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      width: 80%;
       max-width: 600px;
-      margin-bottom: 60px;
+      text-align: center;
+    }
+    h1 {
+      color: #333;
+    }
+    .code-section, .discord-section {
+      margin-top: 20px;
+      padding: 10px;
+      background-color: #f9f9f9;
+      border-radius: 6px;
+    }
+    .code {
+      font-size: 24px;
+      font-weight: bold;
+      color: #2c3e50;
+    }
+    .discord-button {
+      display: inline-block;
+      padding: 10px 20px;
+      margin-top: 20px;
+      background-color: #7289DA;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+    .discord-button:hover {
+      background-color: #5a6ab6;
     }
   </style>
 </head>
 <body>
+  <div class="container">
+    <h1>Welcome to Our Community!</h1>
 
-  <h1>Amicitia Access Gateway</h1>
-  <p class="note">Submission is mandatory before proceeding to the community.</p>
+    <!-- Random Code Section -->
+    <div class="code-section">
+      <p>Here is your unique code:</p>
+      <div class="code" id="userCode"></div>
+    </div>
 
-  <section>
-    <h2>1. Submit Your Entry</h2>
-    <form action="https://formspree.io/f/your-form-id" method="POST">
-      <input type="text" name="name" placeholder="Your name or alias" required>
-      <input type="email" name="email" placeholder="Your email" required>
-      <textarea name="message" rows="4" placeholder="Why do you want to join?" required></textarea>
-      <button type="submit">Submit Request</button>
-    </form>
-  </section>
+    <!-- Discord Invite Section -->
+    <div class="discord-section">
+      <p>Click the button below to join our Discord server:</p>
+      <a href="YOUR_DISCORD_INVITE_LINK" class="discord-button" target="_blank">Join Discord</a>
+    </div>
+  </div>
 
-  <section>
-    <h2>2. Join the Discord</h2>
-    <a class="discord-link" href="https://discord.gg/your-invite-code" target="_blank">Enter Discord</a>
-  </section>
+  <script>
+    // Function to generate a random code (e.g., 6 characters of uppercase letters and numbers)
+    function generateRandomCode() {
+      const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+      let code = '';
+      for (let i = 0; i < 6; i++) {
+        code += characters.charAt(Math.floor(Math.random() * characters.length));
+      }
+      return code;
+    }
 
+    // Display the random code
+    document.getElementById('userCode').innerText = generateRandomCode();
+  </script>
 </body>
 </html>
